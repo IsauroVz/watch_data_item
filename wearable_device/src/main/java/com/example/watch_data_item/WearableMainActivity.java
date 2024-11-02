@@ -24,7 +24,6 @@ public class WearableMainActivity extends Activity implements SensorEventListene
     private static final String SENSOR_ACCEL_DATA = "/sensor_accel_data";
     private TextView gyroDataTextView;
     private TextView accelDataTextView;
-    private SensorManager sensorManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -34,7 +33,7 @@ public class WearableMainActivity extends Activity implements SensorEventListene
         gyroDataTextView = findViewById(R.id.gyroData);
         accelDataTextView = findViewById(R.id.accelData);
 
-        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         Sensor gyroscopeSensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
         Sensor accelerometerSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         if (gyroscopeSensor != null) {
