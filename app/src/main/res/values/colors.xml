@@ -3,5 +3,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="rose">#cd384e</color>
-
+    <color name="beige">#fff5ed</color>
+    <color name="dark_grey">#2c2c2c</color>
 </resources>

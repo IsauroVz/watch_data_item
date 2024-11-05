@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">watch_data_item</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="let_us_help_stretch_your_limits">Let us help stretch your limits</string>
+    <string name="this_app_was_created_to_collect_data_to_help_adults_using_everyday_technology_like_wearables_to_test_users_range_of_motion_this_app_will_test_a_users_ability_to_follow_a_pre_defined_path_to_predict_accuracy_and_control_of_a_persons_said_joint_and_joint_muscles_in_this_case_we_are_testing_the_ankle">This app was created to collect data to help adults using everyday technology like wearables to test users range of motion. This app will test a users ability to follow a pre defined path to predict accuracy and control of a persons said joint and joint muscles. In this case we are testing the ankle.</string>
 </resources>

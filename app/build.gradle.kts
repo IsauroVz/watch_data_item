@@ -1,3 +1,4 @@
+
 plugins {
     alias(libs.plugins.android.application)
 }
@@ -8,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.watch_data_item"
-        minSdk = 33
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -38,7 +39,10 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.play.services.wearable)
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation (libs.mpandroidchart)
 }
