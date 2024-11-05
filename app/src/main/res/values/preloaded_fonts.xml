@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/abel</item>
+        <item>@font/annapurna_sil</item>
+        <item>@font/denk_one</item>
+        <item>@font/geostar_fill</item>
+        <item>@font/tauri</item>
+    </array>
+</resources>

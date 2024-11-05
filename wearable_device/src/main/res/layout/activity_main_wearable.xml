@@ -10,69 +10,23 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp"
-        android:background="@color/white"/>
-
-    <TextView
-        android:id="@+id/gyroData"
-        android:layout_width="140dp"
-        android:layout_height="61dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="145dp"
-        android:textColor="@color/black"
-        android:textSize="12dp" />
-
-    <TextView
-        android:id="@+id/accelData"
-        android:layout_width="141dp"
-        android:layout_height="62dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="82dp"
-        android:layout_marginEnd="43dp"
-        android:layout_marginBottom="83dp"
-        android:textColor="@color/black"
-        android:textSize="12dp" />
+        android:layout_marginBottom="1dp"
+        android:background="@color/black" />
 
     <Button
         android:id="@+id/start_button"
-        android:layout_width="89dp"
-        android:layout_height="43dp"
+        android:layout_width="wrap_content"
+        android:layout_height="74dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="144dp"
-        android:layout_marginEnd="114dp"
-        android:layout_marginBottom="40dp"
-        android:onClick="start_data_button"
-        android:text="Start" />
-
-    <Button
-        android:id="@+id/stop_button"
-        android:layout_width="89dp"
-        android:layout_height="43dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="113dp"
-        android:layout_marginTop="144dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="40dp"
-        android:onClick="stop_data_button"
-        android:text="Stop" />
-
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="75dp"
+        android:text="START"
+        android:textSize="20dp" />
 
 
 </RelativeLayout>
