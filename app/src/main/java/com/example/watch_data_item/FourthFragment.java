@@ -1,11 +1,14 @@
 package com.example.watch_data_item;
 
+import static android.util.Half.EPSILON;
+
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -36,11 +39,14 @@ public class FourthFragment extends Fragment implements DataClient.OnDataChanged
     private FileWriter csvWriter;
     private LineChart lineChart;
     private LineDataSet lineDataSet;
+    private LineDataSet predefinedPathDataSet;
     private LineData lineData;
     private List<Entry> dotEntries;
+    private List<Entry> predefinedPathEntries;
     private float currentX = 0f;
     private float currentY = 0f;
     private String csvFileName;
+    private TextView accuracyErrorText;
 
     // this inflater inflates the View with fragment_fourth
     @Override
@@ -53,9 +59,12 @@ public class FourthFragment extends Fragment implements DataClient.OnDataChanged
 
         // Sets the view chart
         lineChart = view.findViewById(R.id.lineChart);
+        // Show the accuracy of the  path followed
+        accuracyErrorText = view.findViewById(R.id.accuracyErrorText);
 
-        // Calls the method setupChart
+        // Calls the method setupChart with predefined path
         setupChart();
+        generatePredefinedPath();
 
         // calls the file and path for the csvFileName which was given from ThirdFragment to write in
         if (csvFileName != null) {
@@ -100,18 +109,18 @@ public class FourthFragment extends Fragment implements DataClient.OnDataChanged
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(true);
         xAxis.setGridLineWidth(1f);
-        xAxis.setAxisMinimum(-30f);
-        xAxis.setAxisMaximum(30f);
-        xAxis.setGranularity(5f);
+        xAxis.setAxisMinimum(-10f);
+        xAxis.setAxisMaximum(10f);
+        xAxis.setGranularity(1f);
         xAxis.setGranularityEnabled(true);
 
         // Y axis setup
         YAxis yAxisLeft = lineChart.getAxisLeft();
         yAxisLeft.setDrawGridLines(true);
         yAxisLeft.setGridLineWidth(1f);
-        yAxisLeft.setAxisMinimum(-30f);
-        yAxisLeft.setAxisMaximum(30f);
-        yAxisLeft.setGranularity(5f);
+        yAxisLeft.setAxisMinimum(-10f);
+        yAxisLeft.setAxisMaximum(10f);
+        yAxisLeft.setGranularity(1f);
         yAxisLeft.setGranularityEnabled(true);
 
         // removes the right side graph Y axis markers and numbers
@@ -132,6 +141,8 @@ public class FourthFragment extends Fragment implements DataClient.OnDataChanged
 
                     // sending x,y value to the improveAccuracy method
                     improveAccuracy(X, Y);
+                    // sending x,y value to the calculate error method
+                    calculateAndDisplayError(X, Y);
 
                     //appending the data from the onDataChanged Listener to the csv. file
                     try {
@@ -168,6 +179,52 @@ public class FourthFragment extends Fragment implements DataClient.OnDataChanged
         lineChart.notifyDataSetChanged();
         lineChart.invalidate();
     }
+    private void generatePredefinedPath() {
+        predefinedPathEntries = new ArrayList<>();
+
+
+        for (int i = 0; i <= 300; i++) {
+            float x = i * 0.1f;
+            float y = (float) Math.sin(x);
+            predefinedPathEntries.add(new Entry(x, y));
+        }
+
+
+        predefinedPathDataSet = new LineDataSet(predefinedPathEntries, "Predefined Path");
+        predefinedPathDataSet.setColor(getResources().getColor(android.R.color.holo_blue_dark));
+        predefinedPathDataSet.setDrawCircles(false);
+        predefinedPathDataSet.setLineWidth(1.5f);
+
+
+        // Add the predefined path dataset to the line data
+        lineData.addDataSet(predefinedPathDataSet);
+        lineChart.notifyDataSetChanged();
+        lineChart.invalidate();
+    }
+
+    // displays the error percent to the textView
+    private void calculateAndDisplayError(float measuredX, float measuredY) {
+        float acceptedX = (float) Math.sin(currentX); // Expected predefined path value
+        float acceptedY = (float) Math.sin(currentY); // Using the predefined path
+
+
+        float errorX = calculatePercentError(acceptedX, measuredX);
+        float errorY = calculatePercentError(acceptedY, measuredY);
+
+
+        String errorMessage = String.format("Accuracy Error: X: %.2f%%, Y: %.2f%%", errorX, errorY);
+        accuracyErrorText.setText(errorMessage);
+    }
+
+    // To calculate the percent error of your path vs the predefined path
+    private float calculatePercentError(float acceptedValue, float measuredValue) {
+        if (Math.abs(acceptedValue) < EPSILON) {
+            return 0f; // Avoid division by zero if accepted value is very small
+        }
+        float error = Math.abs((acceptedValue - measuredValue) / acceptedValue) * 100f;
+        return Math.min(error, 100f);
+    }
+
 
     // Uses the wearable client to listen for OnDataChanged from the Wearable
     @Override

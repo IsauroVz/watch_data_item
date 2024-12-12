@@ -33,6 +33,36 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="35sp" />
+    <TextView
+        android:id="@+id/instructionTextBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="136dp"
+        android:fontFamily="@font/abel"
+        android:gravity="start"
+        android:padding="10dp"
+        android:text="1. Place wearable right behind the toes\n2. Postition your ankle 90 degrees\n3. Tilt left or right for x axis\n4. Tilt up or down for y axis\n5. Press begin on the wearable\n6. Follow the path as best as you can.\n7. Press done on wearable after path completion "
+        android:textColor="@android:color/black"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/accuracyErrorText"
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="102dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="26sp" />
 
     <Button
         android:id="@+id/toFragment5"
@@ -44,9 +74,10 @@
         android:layout_marginBottom="25dp"
         android:background="@drawable/custom_button"
         android:fontFamily="@font/geostar_fill"
-        android:text="Done"
+        android:text="Next"
         android:textAllCaps="false"
         android:textColor="@color/beige"
         android:textSize="30sp" />
+
 
 </RelativeLayout>

@@ -13,20 +13,35 @@
         android:layout_marginBottom="1dp"
         android:background="@color/black" />
 
-    <Button
-        android:id="@+id/start_button"
+    <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
-        android:layout_height="74dp"
+        android:layout_height="270dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="55dp"
-        android:layout_marginBottom="75dp"
-        android:text="START"
+        android:layout_marginStart="-25dp"
+        android:layout_marginTop="-25dp"
+        android:layout_marginEnd="-25dp"
+        android:layout_marginBottom="-25dp"
+        android:src="@drawable/axis" />
+
+    <Button
+        android:id="@+id/start_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="85dp"
+        android:text="BEGIN"
         android:textSize="20dp" />
+
 
 
 </RelativeLayout>
